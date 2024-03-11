@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="signup.css">
+        
+    </head>
+    <body>
+        <div class="box">
+            <div class="form" id="form">
+                <h2>Sign Up</h2>
+                <form>
+                    <div class="inputbox">
+                        <input type="text" value="" id="username" required>
+                        <span>Username</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="email" value="" id="email" required>
+                        <span>E-mail</span>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" value="" id="password" required>
+                        <span>Password</span>
+                    </div>
+                    <input type="submit" value="Sign Up" class="sub" id="submit">
+
+                </form>
+            </div>
+        </div>
+
+        
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+            import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"
+            import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyBGuqMSAt0HBxQMx7ou70JmtdQVUiQ-lPc",
+              authDomain: "eduswap-e2a03.firebaseapp.com",
+              projectId: "eduswap-e2a03",
+              storageBucket: "eduswap-e2a03.appspot.com",
+              messagingSenderId: "1049115558709",
+              appId: "1:1049115558709:web:f5fd6081437dd6c81a427c"
+            };
+          
+            
+          
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth(app);
+
+let formInp = document.getElementById('form')
+let usernameInp = document.getElementById('username')
+let emailInp = document.getElementById('email')
+let passwordInp = document.getElementById('password')
+
+let RegisterUser = evt => {
+    evt.preventDefault();
+
+    createUserWithEmailAndPassword(auth, emailInp.value, passwordInp.value)
+    .then((credentials)=>{
+        set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
+            username: usernameInp.value
+        })
+    })
+    .catch((error)=>{
+        alert(error.message);
+        console.log(error.code);
+        console.log(error.message);
+    })
+
+    alert("Sign Up Successful !");
+    // window.location.href = "PBLmain.html"
+    // document.getElementById("username").value = "";
+    // document.getElementById("email").value = "";
+    // document.getElementById("password").value = "";
+}
+
+form.addEventListener('submit', RegisterUser);
+
+
+
+
+
+   //get ref to database services
+             
+            //  const db = getDatabase();
+
+            //  document.getElementById("submit").addEventListener('click', function(e){
+            //   e.preventDefault();
+            //   set(ref(db, 'user/' + document.getElementById("username").value),
+            //   {
+   
+            //     username: document.getElementById("username").value,
+            //     email: document.getElementById("email").value,
+            //     // PhoneNumber: document.getElementById("phone").value
+
+            //   });
+            //     alert("Login Successful !");
+                // document.getElementById("username").value = "";
+                // document.getElementById("email").value = "";
+                // document.getElementById("password").value = "";
+            //  })
+
+        </script>
+    </body>
+</html>
