@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
        
 
         // Redirect to the home page (replace "home.html" with your actual home page URL)
-        window.location.href = "index.html";
+        window.location.href = "index2.html";
     });
 });
 document.addEventListener("DOMContentLoaded", function() {
@@ -41,6 +41,22 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.removeItem("removeLoginParagraph");
         }
     }
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the form and submit button
+    const form = document.getElementById("signupform");
+    const submitButton = document.getElementById("submit");
+    
+
+    // Add event listener to the form submit event
+    form.addEventListener("submit", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+       
+
+        // Redirect to the home page (replace "home.html" with your actual home page URL)
+        window.location.href = "login.html";
+    });
 });
 
 
