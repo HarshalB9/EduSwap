@@ -71,7 +71,7 @@
     </style>
   </head>
   <body>
-    <form action="#" method="post">
+    <form action="#" method="post" id="form">
       <h2>Enter product details</h2>
       <label for="title">Title of the product:</label>
       <input
@@ -109,25 +109,29 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required />
 
-      <input type="submit" value="Submit" />
+      <input type="submit" id="submitbtn" value="Submit" />
     </form>
 
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyBSx-Ywq_kk4fIfvAenTwGkAGYZn4qVQCU",
-        authDomain: "eduswap-67b84.firebaseapp.com",
-        projectId: "eduswap-67b84",
-        storageBucket: "eduswap-67b84.appspot.com",
-        messagingSenderId: "746147174924",
-        appId: "1:746147174924:web:05c0b80e23a0512cccac29",
-        measurementId: "G-4FLXJ3YX6Q"
+        apiKey: "AIzaSyDfC63slCtfaXMCWiNzWNcb7NK2bkNbKLQ",
+    authDomain: "eduswap2-1cffe.firebaseapp.com",
+    projectId: "eduswap2-1cffe",
+    storageBucket: "eduswap2-1cffe.appspot.com",
+    messagingSenderId: "167309276328",
+    appId: "1:167309276328:web:fa503b10097795bfaebe9d",
+    measurementId: "G-DYHFVGGFHS"
       };
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+const auth = getAuth(app);
 
       import {
         getStorage,
@@ -135,6 +139,31 @@
         uploadBytesResumable,
         getDownloadURL,
       } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
+
+
+      document.getElementById('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        let title = document.getElementById('title').value;
+        let price = document.getElementById('price').value;
+        let description = document.getElementById('description').value;
+        let contact = document.getElementById('contact').value;
+       
+       
+
+        try {
+            await addDoc(collection(db, "users"), {
+                title:title,
+                price:price,
+                description:description,
+                contact:contact,
+
+            });
+            alert('object added successfully');
+        } catch (error) {
+            console.error("Error adding document: ", error);
+        }
+    });
 
       // VAARIABLES AND REFERENCES
 
@@ -224,5 +253,6 @@
 
       Upbtn.onclick = UploadProcess;
     </script>
+    <!-- <script src="./sellinterface.js"></script> -->
   </body>
 </html>
