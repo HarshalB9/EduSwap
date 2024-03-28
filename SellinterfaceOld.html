@@ -71,7 +71,7 @@
     </style>
   </head>
   <body>
-    <form action="#" method="post" id="form">
+    <form action="#" method="post">
       <h2>Enter product details</h2>
       <label for="title">Title of the product:</label>
       <input
@@ -109,30 +109,12 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required />
 
-      <input type="submit" id="submitbtn" value="Submit" />
+      <input id="submitBtn" type="submit" value="Submit" />
     </form>
 
     <script type="module">
-      // Import the functions you need from the SDKs you need
+      
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-      import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyBGuqMSAt0HBxQMx7ou70JmtdQVUiQ-lPc",
-    authDomain: "eduswap-e2a03.firebaseapp.com",
-    databaseURL: "https://eduswap-e2a03-default-rtdb.firebaseio.com",
-    projectId: "eduswap-e2a03",
-    storageBucket: "eduswap-e2a03.appspot.com",
-    messagingSenderId: "1049115558709",
-    appId: "1:1049115558709:web:f5fd6081437dd6c81a427c"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-const auth = getAuth(app);
-
       import {
         getStorage,
         ref as sRef,
@@ -140,30 +122,82 @@ const auth = getAuth(app);
         getDownloadURL,
       } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-storage.js";
 
+      const firebaseConfig = {
+    apiKey: "AIzaSyBGuqMSAt0HBxQMx7ou70JmtdQVUiQ-lPc",
+    authDomain: "eduswap-e2a03.firebaseapp.com",
+    databaseURL: "https://eduswap-e2a03-default-rtdb.firebaseio.com",
+    projectId: "eduswap-e2a03",
+    storageBucket: "eduswap-e2a03.appspot.com",
+    messagingSenderId: "1049115558709",
+    appId: "1:1049115558709:web:f5fd6081437dd6c81a427c"
+  };
 
-      document.getElementById('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        let title = document.getElementById('title').value;
-        let price = document.getElementById('price').value;
-        let description = document.getElementById('description').value;
-        let contact = document.getElementById('contact').value;
-       
-       
 
-        try {
-            await addDoc(collection(db, "users"), {
-                title:title,
-                price:price,
-                description:description,
-                contact:contact,
+      const app = initializeApp(firebaseConfig);
 
-            });
-            alert('Product details saved successfully');
-        } catch (error) {
-            console.error("Error saving product details: ", error);
-        }
-    });
+// Login credentials linking
+
+//       import { getDatabase, get,child } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"
+//       import { getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js"
+
+//       const db = getDatabase();
+//       const dbref = sRef(db);
+
+//       let LoginUser = evt => {
+//     evt.preventDefault();
+
+//     signInWithEmailAndPassword(auth, emailInp.value, passwordInp.value)
+//     .then((credentials)=>{
+//         get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{
+//             if(snapshot.exists){
+//                 sessionStorage.setItem("user-info", JSON.stringify({
+//                     username: snapshot.val().username
+//                 }))
+//                 sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+//                 // alert("Login Successful !");
+                
+//             }
+//         })
+//     })
+//     .catch((error)=>{
+//         alert(error.message);
+//         console.log(error.code);
+//         console.log(error.message);
+//     })
+    
+// }
+
+//LINKING CREDENTIALS WITH PRODUCT DATA
+
+// var sgnEmail = document.getElementById("email")
+// var sgnPassword = document.getElementById("password")
+
+// const db = getDatabase();
+// const auth = getAuth(app);
+
+// let DetailsLink = evt => {
+//     evt.preventDefault();
+
+//     createUserWithEmailAndPassword(auth, sgnEmail.value, sgnPassword.value)
+//     .then((credentials)=>{
+//         set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
+//             // username: usernameInp.value
+//             title: namebox.value
+//         })
+//     })
+//     .catch((error)=>{
+//         alert(error.message);
+//         console.log(error.code);
+//         console.log(error.message);
+//     })
+
+    // alert("Sign Up Successful !");
+    // window.location.href = "PBLmain.html"
+    // document.getElementById("username").value = "";
+    // document.getElementById("email").value = "";
+    // document.getElementById("password").value = "";
+// }
+
 
       // VAARIABLES AND REFERENCES
 
@@ -177,6 +211,7 @@ const auth = getAuth(app);
       var Selbtn = document.getElementById("selbtn");
       var Upbtn = document.getElementById("upbtn");
       var Downbtn = document.getElementById("downbtn");
+      var SubmitBtn = document.getElementById("submitBtn");
 
       var input = document.createElement("input");
       input.type = "file";
@@ -251,12 +286,12 @@ const auth = getAuth(app);
         );
       }
 
-
-      var SubmitBtn = document.getElementById("submitbtn");
       SubmitBtn.addEventListener("click", UploadProcess);
-
-    //   Upbtn.onclick = UploadProcess;
+      // SubmitBtn.addEventListener("click", DetailsLink);
+      // SubmitBtn.addEventListener("click", LoginUser);
+   
     </script>
-    <!-- <script src="./sellinterface.js"></script> -->
+
+    <!-- <script src="Sellinterface.js"></script> -->
   </body>
 </html>

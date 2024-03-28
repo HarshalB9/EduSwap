@@ -51,6 +51,7 @@
         <a class="buysell" href="#" style="--clr: #ff1867"
           ><span>SELL</span><i></i
         ></a>
+        
       </div>
     </div>
     <div class="v_container">
@@ -136,7 +137,7 @@
     </div>
     <div id="ABOUTUS" class="v_about_us_container">
       <div class="v_about_us_heading">
-        <h2>The Team behind &nbsp;</h2>
+        <h2 id="AUheading">The Team behind &nbsp;</h2>
         <img src="./final-logo.png" alt="" />
       </div>
 
@@ -162,7 +163,7 @@
       <div class="v_about_us_bottom_div">
         <div class="v_about_us_content_div">
           <img src="./vedpic.jpg" alt="" />
-          <h3>ved Sahasrabudhe</h3>
+          <h3>Ved Sahasrabudhe</h3>
           <a href=""><i class="fa-brands fa-linkedin"></i></a>
         </div>
         <div class="v_about_us_content_div">
@@ -173,7 +174,10 @@
       </div>
     </div>
 
-    <script>
+    <script type="module">
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
       let UserCreds = JSON.parse(sessionStorage.getItem('user-creds'));
       let UserInfo = JSON.parse(sessionStorage.getItem('user-info'));
 
@@ -188,7 +192,49 @@
 
       SignOutBtn.addEventListener('click', SignOut);
 
-    </script>
+// Displaying username from Database to the Web page (Not working, probably error with the path)
+
+//CODE FROM CHATGPT
+
+//     let FetchUsername = () =>{
+//       const firebaseConfig = {
+//     apiKey: "AIzaSyBGuqMSAt0HBxQMx7ou70JmtdQVUiQ-lPc",
+//     authDomain: "eduswap-e2a03.firebaseapp.com",
+//     databaseURL: "https://eduswap-e2a03-default-rtdb.firebaseio.com",
+//     projectId: "eduswap-e2a03",
+//     storageBucket: "eduswap-e2a03.appspot.com",
+//     messagingSenderId: "1049115558709",
+//     appId: "1:1049115558709:web:f5fd6081437dd6c81a427c"
+//   };
+
+
+      
+//       // Initialize Firebase
+//       const app = initializeApp(firebaseConfig);
+
+//       var database = firebase.database();
+//       var ref = database.ref(database, 'UsersAuthList/' + credentials.user.uid, username.value);
+
+//       ref.on('value', function(snapshot) {
+//   var data = snapshot.val();
+//   // Assuming 'data' is an object containing your data
+//   // Example: Displaying data in a list
+//   var auheading = document.getElementById('AUheading');
+//   auheading.innerHTML = ''; // Clear previous data
+//   for (var key in data) {
+//     if (data.hasOwnProperty(key)) {
+//       var item = document.createElement('h2');
+//       item.textContent = data[key];
+//       auheading.appendChild(item);
+//     }
+//   }
+// });
+// }
+
+// let Samp = document.getElementById('displayusername');
+// Samp.addEventListener('click', FetchUsername )
+</script>
+    
 
 
   </body>
