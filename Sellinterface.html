@@ -6,12 +6,6 @@
     <title>Sell on EduSwap</title>
     <style>
       body {
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sell on EduSwap</title>
-    <style>
-      body {
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         margin: 0;
         padding: 0;
@@ -36,9 +30,7 @@
       /* label { */
       /* font-weight: 600; */
       /* } */
-      input,
-      textarea {
-      }
+     
       /* label { */
       /* font-weight: 600; */
       /* } */
@@ -51,8 +43,7 @@
         border-radius: 4px;
         box-sizing: border-box;
       }
-      textarea {
-      }
+     
       textarea {
         height: 100px;
       }
@@ -62,8 +53,7 @@
         border: 2px solid black;
       }
 
-      input[type="submit"] {
-      }
+      
       img {
         height: 200px;
         width: 200px;
@@ -78,67 +68,9 @@
         cursor: pointer;
         border-radius: 4px;
       }
-      input[type="submit"]:hover {
-      }
+      
       input[type="submit"]:hover {
         background-color: #0056b3;
-      }
-
-      .imgbtns {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        cursor: pointer;
-        border-radius: 4px;
-      }
-
-      .imgbtns:hover {
-        background-color: #0056b3;
-      }
-    </style>
-  </head>
-  <body>
-    <form action="#" method="post" id="form">
-      <h2>Enter product details</h2>
-      <label for="title">Title of the product:</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        placeholder="E.g. PPS TechKnowledge (First Year) 2022 edition"
-        required
-      />
-      <label for="price">Price:</label>
-      <input type="number" id="price" name="price" min="0" required />
-      <label for="description">Description of the product:</label>
-      <textarea id="description" name="description" required></textarea>
-      <label for="contact">Contact Number</label>
-      <input type="tel" id="contact" name="contact" required />
-      <label>Image name</label>
-      <input
-        type="text"
-        id="namebox"
-        placeholder="(Autofilled after selecting file)"
-      />
-      <label id="extlab"></label> <br /><br />
-      <img id="myimg" /> <label id="upprogress"></label> <br />
-      <br />
-
-      <button class="imgbtns" id="selbtn">Select Image</button>
-      <button class="imgbtns" id="upbtn">Upload Image</button>
-      <button class="imgbtns" id="downbtn">Download Image</button>
-      <br />
-      <br />
-
-      <h2>Enter login credentials</h2>
-      <label for="email">Email-ID</label>
-      <input type="text" id="email" name="email" required />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required />
-
-      <input type="submit" id="submitbtn" value="Submit" />
-    </form>
       }
 
       .imgbtns {
@@ -335,7 +267,6 @@ const auth = getAuth(app);
           }
         );
       }
-
 
       var SubmitBtn = document.getElementById("submitbtn");
       SubmitBtn.addEventListener("click", UploadProcess);
